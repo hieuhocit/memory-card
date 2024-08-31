@@ -12,7 +12,12 @@ function getRandomCharacter(characters, selectedCharacters) {
 export default function getRandomCharacters(characters, selectedCharacters, level) {
   const getCharacters = (quantity) => {
     const randomCharacters = [];
-    randomCharacters.push(getRandomCharacter(characters, []));
+    randomCharacters.push(
+      getRandomCharacter(
+        characters.filter((c) => selectedCharacters.find((slc) => slc.id === c.id) === undefined),
+        []
+      )
+    );
 
     for (let i = 0; i < quantity - 1; i++) {
       let character = getRandomCharacter(characters, selectedCharacters);
@@ -28,17 +33,17 @@ export default function getRandomCharacters(characters, selectedCharacters, leve
     case 'easy':
       return {
         randomCharacters: getCharacters(3),
-        goals: 5,
+        goals: 10,
       };
     case 'medium':
       return {
         randomCharacters: getCharacters(4),
-        goals: 10,
+        goals: 15,
       };
     case 'hard':
       return {
         randomCharacters: getCharacters(5),
-        goals: 15,
+        goals: 20,
       };
     default:
       throw new Error('Invalid level');

@@ -31,7 +31,7 @@ export default function Card({ character, onClickCard }) {
               alt={character.description}
             />
           </div>
-          <p className='character-name'>{character.name}</p>
+          <p className='character-name'><span>{character.name}</span></p>
         </div>
         <div className='back'></div>
       </div>

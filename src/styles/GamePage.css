@@ -22,7 +22,7 @@
       @apply w-full h-full grid;
       justify-content: center;
       align-items: center;
-      grid-template-columns: repeat(1, minmax(0, 260px));
+      grid-template-columns: repeat(1, minmax(0, 280px));
       gap: 3rem;
 
       .card-container {
@@ -56,7 +56,13 @@
               }
             }
             .character-name {
-              @apply w-full flex justify-center items-center text-2xl text-yellow-400 font-bold bg-slate-600 p-4 rounded-b-2xl;
+              @apply w-full flex justify-center items-center rounded-b-2xl p-4 bg-slate-600;
+              padding-inline: 1rem;
+
+              span {
+                @apply inline-block text-center text-2xl text-yellow-400 font-bold truncate text-nowrap;
+                max-width: 100%;
+              }
             }
           }
 
@@ -70,7 +76,7 @@
         }
       }
     }
-    
+
     .cards-list.flipped {
       .card {
         .front {
@@ -91,19 +97,19 @@
 
     @media (min-width: 1000px) {
       .cards-list {
-        grid-template-columns: repeat(3, minmax(0, 260px));
+        grid-template-columns: repeat(3, minmax(0, 240px));
       }
     }
     @media (min-width: 1280px) {
       .cards-list.medium,
       .cards-list.hard {
-        grid-template-columns: repeat(4, minmax(0, 260px));
+        grid-template-columns: repeat(4, minmax(0, 240px));
         gap: 3rem;
       }
     }
     @media (min-width: 1480px) {
       .cards-list.hard {
-        grid-template-columns: repeat(5, minmax(220px, 1fr));
+        grid-template-columns: repeat(5, minmax(0, 240px));
         gap: 2rem;
       }
     }

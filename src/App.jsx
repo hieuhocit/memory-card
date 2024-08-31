@@ -37,7 +37,7 @@ function useFetchCharacters() {
       setLoading(true);
       setProgress(0);
       let ignore = false;
-      const data = await fetchData('https://dragonball-api.com/api/characters?limit=20', setProgress);
+      const data = await fetchData('https://dragonball-api.com/api/characters?limit=58', setProgress);
 
       if (!ignore) {
         setCharacters(data);
