@@ -20,6 +20,7 @@ Live preview of the project is [here](https://hieuhocit.github.io/memory-card/)
 - **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
 - **FontAwesome**: Icons and styling for interactive elements.
 - **JavaScript**: The core logic for the game is implemented in JavaScript.
+- **Dragonball-API**: To start using the API, visit the [Dragonball-API website](https://web.dragonball-api.com/).
 
 ## Installation
 
