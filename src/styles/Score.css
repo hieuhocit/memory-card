@@ -1,0 +1,10 @@
+.score-container {
+  @apply bg-slate-900 p-6 rounded-2xl text-white text-2xl font-bold flex flex-col gap-2 shadow-md shadow-yellow-300;
+  padding-inline: 2rem;
+}
+
+@media (min-width: 1280px) { 
+  .score-container {
+    @apply p-4;
+  }
+}

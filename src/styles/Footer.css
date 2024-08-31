@@ -1,0 +1,77 @@
+.footer {
+  @apply absolute left-0 bottom-0 w-full bg-transparent flex justify-between items-center;
+  padding-inline: 1.5rem;
+  padding-bottom: 1.5rem;
+
+  .section-sounds {
+    @apply flex items-center gap-3;
+  }
+
+  .section-help {
+    .instructions {
+      --image-size: 60px;
+      @apply fixed;
+      right: calc(var(--image-size) * 2 + 2rem);
+      bottom: 0;
+      margin-left: 2rem;
+      transform: translateY(150%);
+      transition: transform 200ms ease-in;
+
+      .instructor {
+        @apply absolute rounded-full;
+        top: 100%;
+        right: -1rem;
+        transform: translateY(-75%) translateX(100%);
+        width: var(--image-size);
+        cursor: pointer;
+        transition: box-shadow 200ms ease-in-out;
+      }
+
+      .instructor:hover,
+      .instructions:active,
+      .instructions:focus {
+        box-shadow: 0px 0px 70px 20px theme(colors.yellow.300), inset 0px 0px 70px 20px theme(colors.yellow.300);
+      }
+
+      .text {
+        @apply flex flex-col gap-4;
+        transform: translateY(calc(var(--image-size) / 1.5 * -1));
+
+        span {
+          @apply text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold bg-yellow-800 p-5 rounded-2xl text-white text-center;
+          word-break: break-all;
+        }
+      }
+    }
+
+    .instructions.show {
+      transform: translateY(0);
+    }
+  }
+
+  @media (min-width: 640px) {
+    .section-help {
+      .instructions {
+        --image-size: 80px;
+      }
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-help {
+      .instructions {
+        --image-size: 100px;
+      }
+    }
+  }
+
+  .section-sounds,
+  .section-help {
+    button {
+      @apply bg-yellow-500 rounded-full flex items-center justify-center text-xl hover:scale-110;
+      width: 45px;
+      height: 45px;
+      transition: transform 250ms ease-in-out;
+    }
+  }
+}

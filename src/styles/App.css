@@ -1,0 +1,18 @@
+#video-bgc {
+  @apply fixed object-cover aspect-video brightness-90 inset-0 h-full w-full;
+  z-index: -1;
+}
+
+#app {
+  @apply flex flex-col flex-1 relative overflow-y-hidden;
+
+  .game-page:has(.popup-container) {
+    z-index: 2;
+  }
+
+  .game-page:has(.popup-container) ~ .footer {
+    .instructions {
+      z-index: 2;
+    }
+  }
+}

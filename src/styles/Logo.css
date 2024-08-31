@@ -1,0 +1,7 @@
+.logo {
+  @apply hover:scale-110;
+  width: 300px;
+  cursor: pointer;
+  transition: transform 200ms ease-in-out;
+}
+
