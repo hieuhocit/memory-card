@@ -2,7 +2,9 @@
 
 Welcome to the **Memory Card Game** featuring the iconic characters from the legendary anime **Dragon Ball**! This is a fun and interactive memory game. The game includes different levels of difficulty, customizable sound effects, and exciting hover effects on each card.
 
-![Memory Card Game Screenshot](./src/assets/imgs/introduction.png);
+![Memory Card Game Screenshot](./src/assets/imgs/introduction.png)
+
+Live preview of the project is [here](https://hieuhocit.github.io/memory-card/)
 
 ## Features
 
