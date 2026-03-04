@@ -9,7 +9,7 @@
     height: var(--height-bar);
 
     .progress-bar {
-      @apply w-full h-full rounded-2xl border-2 border-solid border-yellow-400 overflow-hidden relative;
+      @apply w-full h-full rounded-2xl border-2 border-solid border-yellow-400 relative;
 
       .progress-text {
         @apply text-white text-base absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2;
@@ -19,14 +19,17 @@
         @apply h-full bg-yellow-400 rounded-2xl;
         transition: width 100ms linear;
         width: var(--progress);
+        position: relative;
       }
     }
 
     .img-container {
-      @apply absolute top-0 left-0;
-      transform: translateY(-100%) translateX(calc(var(--progress) - calc(var(--songoku-width) / 2)));
+      position: absolute;
       width: var(--songoku-width);
       transition: width 100ms linear;
+      top: 0;
+      right: 0;
+      transform: translateY(-100%) translateX(50%);
     }
   }
 
