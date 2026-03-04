@@ -1,71 +1,43 @@
 export default async function fetchData(url, setProgress) {
+  let progress = 0;
+
   try {
     const response = await fetch(url);
+
+    progress = increaseProgress(progress);
+    setProgress((prev) => Math.max(prev, progress));
+    await waitRandom(500, 1000);
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
-    // Get the total length of the response content from headers (if available)
-    const contentLength = response.headers.get('Content-Length');
+    progress = increaseProgress(progress);
+    setProgress(prev => Math.max(prev, progress));
+    await waitRandom(500, 1200);
 
-    if (!contentLength) {
-      console.error('Content-Length not specified in the response headers.');
-      return;
-    }
+    const data = await response.json();
 
-    const total = parseInt(contentLength, 10); // Convert to integer
-    const reader = response.body.getReader();
-    let receivedLength = 0; // Number of bytes received so far
-    const chunks = []; // Array to accumulate chunks
+    progress = increaseProgress(progress);
+    setProgress(prev => Math.max(prev, progress));
+    await waitRandom(400, 800);
 
-    await waitAMinute(1000);
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) {
-        break;
-      }
+    setProgress(100);
+    await waitRandom(200, 300);
 
-      chunks.push(value);
-      receivedLength += value.length;
-
-      // Update the progress bar value
-      setProgress((receivedLength / total) * 100);
-    }
-
-    // Concatenate all chunks into a single Uint8Array
-    const chunksAll = new Uint8Array(receivedLength);
-    let position = 0;
-    for (let chunk of chunks) {
-      chunksAll.set(chunk, position);
-      position += chunk.length;
-    }
-
-    // Decode the result as a string
-    const resultString = new TextDecoder('utf-8').decode(chunksAll);
-
-    // Parse the JSON string into an object
-    let resultJson;
-    try {
-      resultJson = JSON.parse(resultString);
-    } catch (err) {
-      console.error('Error parsing JSON:', err);
-      throw err; // Re-throw the error after logging it
-    }
-
-    // console.log('Download complete. Total size:', receivedLength, 'bytes');
-    // console.log('Received JSON:', resultJson);
-    await waitAMinute(1000);
-    return resultJson.items;
+    return data?.items || [];
   } catch (err) {
-    console.error('Fetch error:', err);
+    console.error("Fetch error:", err);
+    return [];
   }
 }
 
-function waitAMinute(delay) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve('Done');
-    }, delay);
-  });
+function increaseProgress(current) {
+  const increment = Math.floor(Math.random() * 20) + 10;
+  return Math.min(current + increment, 90);
+}
+
+function waitRandom(min, max) {
+  const delay = Math.floor(Math.random() * (max - min)) + min;
+  return new Promise((resolve) => setTimeout(resolve, delay));
 }
